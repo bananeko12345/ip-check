@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#10130f" />
+    <meta name="description" content="自分の公開IPアドレスと接続情報をすばやく確認できます。" />
+    <title>IP / CHECK — 公開IPを確認</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar" aria-label="サイトヘッダー">
+        <a class="wordmark" href="/" aria-label="IP Check ホーム">
+          <span class="wordmark-lamp" aria-hidden="true"></span>
+          <span>IP <b>/</b> CHECK</span>
+        </a>
+        <div class="topbar-note"><span class="topbar-dot" aria-hidden="true"></span> PUBLIC SIGNAL / 001</div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div class="intro-copy">
+            <p class="eyebrow">YOUR CURRENT CONNECTION</p>
+            <h1 id="page-title">いまの接続を<br /><em>確認する</em></h1>
+            <p class="intro-text">あなたの公開IPアドレスを取得し、接続元の概要をすばやく表示します。</p>
+          </div>
+          <div class="signal-mark" aria-hidden="true">
+            <span class="signal-ring signal-ring--outer"></span>
+            <span class="signal-ring signal-ring--inner"></span>
+            <span class="signal-cross signal-cross--h"></span>
+            <span class="signal-cross signal-cross--v"></span>
+            <span class="signal-core"></span>
+          </div>
+        </section>
+
+        <section class="scan-board" aria-labelledby="result-title">
+          <div class="board-topline">
+            <div class="board-label"><span class="live-lamp" aria-hidden="true"></span> LIVE / PUBLIC SIGNAL</div>
+            <div class="board-index">01 <span>/</span> 01</div>
+          </div>
+
+          <div class="result-heading">
+            <div>
+              <p class="eyebrow">CURRENT PUBLIC IP</p>
+              <h2 id="result-title">あなたのIPアドレス</h2>
+            </div>
+            <span id="connection-badge" class="connection-badge" data-state="idle">待機中</span>
+          </div>
+
+          <div class="ip-frame" data-state="idle">
+            <div id="ip-value" class="ip-value" aria-live="polite">—</div>
+            <div class="ip-meta">
+              <span id="ip-type" class="ip-type">IP TYPE / —</span>
+              <button id="copy-button" class="copy-button" type="button" disabled>
+                <span class="copy-icon" aria-hidden="true">↗</span>
+                <span id="copy-label">コピー</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="board-actions">
+            <div id="status-message" class="status-message" role="status" aria-live="polite">
+              <span class="status-pulse" aria-hidden="true"></span>
+              <span>チェックボタンから取得を開始してください。</span>
+            </div>
+            <button id="check-button" class="check-button" type="button">
+              <span class="button-mark" aria-hidden="true">+</span>
+              <span id="check-label">IPをチェック</span>
+              <span class="button-arrow" aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="details-section" aria-labelledby="details-title">
+          <div class="details-heading">
+            <div>
+              <p class="eyebrow">SIGNAL DETAILS</p>
+              <h2 id="details-title">取得できた接続情報</h2>
+            </div>
+            <p class="updated-at">LAST OBSERVATION <span id="updated-at">—</span></p>
+          </div>
+
+          <div class="details-grid">
+            <article class="detail-card detail-card--wide">
+              <div class="detail-number">A / 01</div>
+              <div class="detail-content">
+                <p class="detail-label">LOCATION</p>
+                <p id="location-value" class="detail-value">—</p>
+                <p class="detail-note">国・地域・都市</p>
+              </div>
+              <span class="detail-corner" aria-hidden="true">↗</span>
+            </article>
+            <article class="detail-card">
+              <div class="detail-number">B / 02</div>
+              <div class="detail-content">
+                <p class="detail-label">TIMEZONE</p>
+                <p id="timezone-value" class="detail-value">—</p>
+                <p class="detail-note">タイムゾーン</p>
+              </div>
+              <span class="detail-corner" aria-hidden="true">↗</span>
+            </article>
+            <article class="detail-card">
+              <div class="detail-number">C / 03</div>
+              <div class="detail-content">
+                <p class="detail-label">PROVIDER</p>
+                <p id="provider-value" class="detail-value">—</p>
+                <p class="detail-note">ISP / 組織</p>
+              </div>
+              <span class="detail-corner" aria-hidden="true">↗</span>
+            </article>
+          </div>
+        </section>
+
+        <aside class="privacy-note">
+          <span class="privacy-icon" aria-hidden="true">◎</span>
+          <p>取得した情報はこの画面に表示するためだけに使われ、保存されません。位置情報はIPから推定された概要です。</p>
+        </aside>
+      </main>
+
+      <footer class="footer">
+        <span>IP / CHECK</span>
+        <span>NO LOGIN · NO STORAGE</span>
+        <span>BUILT FOR A QUICK LOOK</span>
+      </footer>
+    </div>
+  </body>
+</html>
